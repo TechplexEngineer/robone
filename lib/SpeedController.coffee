@@ -1,6 +1,6 @@
-pins = require('PortMap.js').PWM;
-
-
+pins = require('./PortMap.js').PWM;
+util = require('./Util.coffee');
+_ = require('lodash');
 
 
 class SpeedController
@@ -13,22 +13,15 @@ class SpeedController
 		max: 2e-3
 	};
 
-	constructor: (@port, @options) ->
-		_.merge(@options, options)
+	constructor: (@port, opt) ->
+
+		_.merge(@options, opt)
 		@b = require('bonescript');
 	
 	set: (speed) ->
-		@setPWM(pins(@port), speed);
+		util.setPWM(pins[@port], speed, @options);
 		
+
 		
-	setPWM: (pin, speed) ->
-		ton = 1.5e-3;
-		
-		freq = 50;
-		period = 1/freq;
-		duty = ton/period;
-		console.log(ton, freq, period, duty);
-		b.pinMode(pin, b.OUTPUT);
-		b.analogWrite(pin, duty, freq, console.log);
 	
 module.exports = SpeedController

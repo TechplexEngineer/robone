@@ -16,3 +16,4 @@ class Solenoid
 		else
 			@b.digitalWrite(pin, @b.LOW);
 			
+module.exports = Solenoid
