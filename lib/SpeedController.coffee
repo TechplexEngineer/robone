@@ -14,14 +14,9 @@ class SpeedController
 	};
 
 	constructor: (@port, opt) ->
-
 		_.merge(@options, opt)
-		@b = require('bonescript');
-	
-	set: (speed) ->
-		util.setPWM(pins[@port], speed, @options);
-		
 
-		
-	
+	set: (speed) ->
+		util.setPWM(pins(@port), speed, @options);
+
 module.exports = SpeedController

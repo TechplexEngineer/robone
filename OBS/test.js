@@ -1,11 +1,20 @@
-
-
-pins = {
-	1: "P9_14",
-	2: "P9_16"
-};
-
+// pins = {
+// 	1: "P9_14",
+// 	2: "P9_16"
+// };
+console.time('OBS');
 var b = require('octalbonescript');
+console.timeEnd('OBS');
+
+console.time('BS');
+var b2 = require('bonescript');
+console.timeEnd('BS');
+
+console.time('_');
+var _ = require('lodash');
+console.timeEnd('_');
+
+console.time('REST');
 // b.pinMode('P9_14', b.OUTPUT);
 // b.analogWrite('P9_14', 0.7, 2000.0, printStatus);
 // function printStatus(x) {
@@ -56,4 +65,5 @@ function setPWM(pin, speed) {
 	b.analogWrite(pin, duty, freq, console.log);
 	
 }
-setPWM('P9_14', 1);
+setPWM('P9_14', 0);
+console.timeEnd('REST');
