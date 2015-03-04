@@ -3,7 +3,9 @@
 #loader code http://stackoverflow.com/questions/5364928/node-js-require-all-files-in-a-folder
 path = require("path");
 
+console.time "OBS"
 global.b = require('octalbonescript');
+console.timeEnd "OBS"
 
 module.exports = (dir) ->
 	dir = '.' if not dir
